@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
-
-ReactDOM.render(<App />, document.getElementById('root'));
-registerServiceWorker();
+import './styles/index.css';
+import {UserPage} from './pages/users';
+import {guid} from "./utils/helpers";
+    
+const clientID = guid();
+ReactDOM.render(<UserPage client={clientID} />, document.getElementById('root'));
