@@ -14,5 +14,8 @@ body {
 }
 li {
   user-select: none;
+}
+.button, .username {
+  margin-right: 10px;
   cursor: pointer;
 }
