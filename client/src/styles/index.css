@@ -1,0 +1,21 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.online {
+  list-style: disc;
+  color: green;
+}
+.offline {
+  list-style: circle;
+  color: red;
+}
+li {
+  user-select: none;
+}
+.button, .username {
+  margin-right: 10px;
+  cursor: pointer;
+}
