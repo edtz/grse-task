@@ -45,7 +45,7 @@ def user_detail(name):
     user = users_filtered[0]
     if request.method == 'PUT':
         try:
-            user['username'] = request.form["name"]
+            user['username'] = request.get_json(force=True)["username"]
         except: 
             return jsonify({
                 "status": "error",

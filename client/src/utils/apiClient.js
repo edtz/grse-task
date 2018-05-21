@@ -1,9 +1,17 @@
 import {SERVER_URL} from "../constants";
 
-const fetchJson = (url, init) => fetch(url, {
+const fetchJson = (url, init = {}) => fetch(url, {
     ...init,
-    Accept: 'application/json',
-}).then(resp => resp.json());
+    "Accept": 'application/json',
+    "Content-Type": 'application/json',
+})
+    .then(resp => resp.json())
+    .then(resp => {
+        if (resp.status === "error") {
+            throw new Error(resp.error);
+        }
+        return resp;
+});
 
 export class Users {
     getList = () => fetchJson(`${SERVER_URL}/api/users/`, {
@@ -12,6 +20,6 @@ export class Users {
     getUser = user => fetchJson(`${SERVER_URL}/api/users/${user}/`);
     putUser = (user, name) => fetchJson(`${SERVER_URL}/api/users/${user}/`, {
         method: "PUT",
-        body: { username: name }
+        body: JSON.stringify({username: name})
     });
 }
